@@ -1,8 +1,15 @@
-const Form = () => {
+const Form = ({getWeather}) => {
+
+    const handleClickSubmit = e => {
+        e.preventDefault();
+        const city = e.currentTarget.city.value.trim();
+        getWeather(city);
+    }
+
     return (
-        <form>
-            <input type={'text'}/>
-            <button>Get Weather</button>
+        <form onSubmit={handleClickSubmit}>
+            <input type={'text'} name={'city'}/>
+            <button type={'submit'}>Get Weather</button>
         </form>
     );
 };
